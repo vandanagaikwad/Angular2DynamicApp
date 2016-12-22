@@ -1,0 +1,207 @@
+<div class="row">
+    <div class="col-lg-12" style="margin-top:50px">
+        <div class="col-lg-9 well well-sm" style="margin-right:10px">
+            <input data-val="true" data-val-number="The field TableId must be a number." data-val-required="The TableId field is required." id="TableId" name="TableId" type="hidden" value="22" />
+            <input data-val="true" data-val-number="The field FormId must be a number." data-val-required="The FormId field is required." id="FormId" name="FormId" type="hidden" value="75" />
+            <div class="col-lg-12 ui-sortable" id="formContent">
+                <h3>User</h3>
+                <div id="202" style="width:100%; margin-bottom:20px">
+                    <div class="col-lg-12" style="min-height:50px">
+                        <label>Users Details</label>
+                        <div class="col-lg-12">
+                            <div class='col-lg-12' style='min-height:50px'>
+                                <div style="width:100%">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                        Users Details
+                                                    </div>
+                                        <div class="panel-body panelBody form-horizontal" style="min-height:50px">
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Name</label>
+                                                    <input id="Name" name="name" type="text" value="" [(ngModel)]="record.fields.name" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">branch</label>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Names</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">language</label>
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Names</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">First name</label>
+                                                    <input id="First name" name="firstname" type="text" value="" [(ngModel)]="record.fields.firstname" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Middle name</label>
+                                                    <input id="Middle name" name="middlename" type="text" value="" [(ngModel)]="record.fields.middlename" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Last name</label>
+                                                    <input id="Last name" name="lastname" type="text" value="" [(ngModel)]="record.fields.lastname" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Default Branch</label>
+                                                    <input id="defaultbranch" name="defaultbranch" type="text" value="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:100%">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                                        Availability
+                                                    </div>
+                                        <div class="panel-body panelBody form-horizontal" style="min-height:50px">
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Mon Start</label>
+                                                    <input id="Mon Start" name="monstart" type="text" value="" [(ngModel)]="record.fields.monstart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Mon End</label>
+                                                    <input id="Mon End" name="monend" type="text" value="" [(ngModel)]="record.fields.monend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Tue Start</label>
+                                                    <input id="Tue Start" name="tuestart" type="text" value="" [(ngModel)]="record.fields.tuestart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Tue End</label>
+                                                    <input id="Tue End" name="tueend" type="text" value="" [(ngModel)]="record.fields.tueend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Wed Start</label>
+                                                    <input id="Wed Start" name="wedstart" type="text" value="" [(ngModel)]="record.fields.wedstart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Wed End</label>
+                                                    <input id="Wed End" name="wedend" type="text" value="" [(ngModel)]="record.fields.wedend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Thu Start</label>
+                                                    <input id="Thu Start" name="thustart" type="text" value="" [(ngModel)]="record.fields.thustart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Thu End</label>
+                                                    <input id="Thu End" name="thuend" type="text" value="" [(ngModel)]="record.fields.thuend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Fri Start</label>
+                                                    <input id="Fri Start" name="fristart" type="text" value="" [(ngModel)]="record.fields.fristart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Fri End</label>
+                                                    <input id="Fri End" name="friend" type="text" value="" [(ngModel)]="record.fields.friend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Sat Start</label>
+                                                    <input id="Sat Start" name="satstart" type="text" value="" [(ngModel)]="record.fields.satstart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Sat End</label>
+                                                    <input id="Sat End" name="satend" type="text" value="" [(ngModel)]="record.fields.satend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Sun Start</label>
+                                                    <input id="Sun Start" name="sunstart" type="text" value="" [(ngModel)]="record.fields.sunstart" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-12 col-sm-12">
+                                                <div class="uiItem">
+                                                    <label class="col-lg-4 col-sm-12">Sun End</label>
+                                                    <input id="Sun End" name="sunend" type="text" value="" [(ngModel)]="record.fields.sunend" class="ng-valid ng-dirty ng-touched" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-default" (click)="save()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

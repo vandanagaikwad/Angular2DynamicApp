@@ -1,0 +1,35 @@
+<div class="sidebar-menu toggle-others fixed">      
+    <div class="sidebar-menu-inner" style="background: #2c2e2f;">                
+        <header class="logo-env">       
+        <!-- logo -->
+            <div class="logo">
+            <a href="#" class="logo-expanded">
+            <img src="assets/images/logo@2x.png" width="80" alt="" />
+            </a>        
+            <a href="#" class="logo-collapsed">
+            CCR
+            </a>
+        </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            <li class="opened active" *ngFor="let nav of navmenu">
+                <a href="">
+                    <i class="linecons-cog"></i>
+                    <span class="title">{{nav.name}}</span>
+                </a>
+                
+                <ul *ngIf="nav.subMenuItems.length" class="scrollSidebar">
+                    <li *ngFor="let item of nav.subMenuItems" (click)="gotoList(item)">
+                        <a href="/list/{{item.name}}">
+                            <span class="title">{{item.displayName}}</span>
+                        </a>
+                    </li>                           
+                </ul>
+           
+            </li>
+
+        </ul>
+
+    </div>     
+</div>
+

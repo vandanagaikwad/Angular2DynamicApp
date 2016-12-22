@@ -1,0 +1,293 @@
+
+<alert *ngFor="let alert of alerts;let i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)" dismissOnTimeout="3000" style="display: block;">
+  {{ alert?.msg }}
+</alert>
+
+<nav class="navbar navbar-light bg-faded navBar">
+  <ul class="nav navbar-nav">
+    <li class="nav-item active">
+      <a class="glyphicon glyphicon-plus-sign" (click) ="newRecord()">New</a>
+    </li>
+    <li class="nav-item">
+      <a class="glyphicon glyphicon-plus sortable" (click) ="updateRecord()">Update</a>
+    </li>
+    <li class="nav-item">
+      <a class="glyphicon glyphicon-trash sortable" (click) ="deleteRecord()">Delete</a>
+    </li>
+    <li class="nav-item">
+      <a class="glyphicon glyphicon-envelope" href="#">Email Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="glyphicon glyphicon-export" href="#">Export Excel</a>
+    </li>
+    <!-- <li *ngFor="let item of items | searchfilter:filterargs">{{item.title}}</li> -->
+  </ul>
+</nav>
+
+<div *ngIf="dataBody.length">
+<tabset>
+	<tab heading="All Members">
+		<div class="scrollContent">
+		<table class="table table-hover members-table middle-align" *ngIf="dataBody.length">
+			<thead>
+				<tr>
+					<th></th>
+          			<th *ngFor="let item of dataHead">{{item}}</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of dataBody | searchfilter:filterargs" (dblclick) ="singleUpdate(item)">
+					<td>
+		                <input id="{{item.$id}}"  type="checkbox" [(ngModel)]="item.selected">
+		            </td>
+					<td class="user-cb" *ngFor="let object of item | keys">
+					  <!-- <b>{{object.key}}</b> -->
+					  <span>{{object.value}}</span>
+					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</tab>
+</tabset>
+<div class="searchBox">
+	<label class="col-lg-4 col-sm-12">Filter By : </label>
+    <input id="Search" name="Search" type="text" value="" [(ngModel)]="searchName" placeholder="search name" class=" ng-valid ng-dirty ng-touched"
+    [typeahead]="states"/>
+    <span class="glyphicon glyphicon-search" (click)="searchRecords()"></span>
+</div>
+</div>
+<div>
+  <div class="xe-widget xe-todo-list">
+    <div class="xe-header">
+      <div class="xe-icon">
+        <i class="fa-file-text-o"></i>
+      </div>
+      <div class="xe-label">
+        <span>to do list</span>
+        <strong>Tasks</strong>
+      </div>
+    </div>
+    <div class="xe-body">
+      
+      <ul class="list-unstyled" *ngFor="let item of taskData">
+        <li>
+          <label>
+            <input id="{{item.$id}}"  [(ngModel)]="item.selected" type="checkbox" class="cbr" />
+            <span>{{item.task}}</span>
+          </label>
+        </li>
+      </ul>
+      
+    </div>
+    <div class="xe-footer">
+      <input type="text" class="form-control" style="width: inherit" placeholder="Add task..." [(ngModel)]="newTask" (keyup.enter)="addTasks()"/>
+      <br>
+      <button type="button" class="btn btn-default" (click)="addTasks()" [disabled]="!newTask">Add</button>
+      <br>
+      <button type="button" class="btn btn-default" (click)="removeTasks()">Remove</button>
+
+    </div>
+  </div>
+</div>
+<div>
+<div class="xe-widget xe-conversations">
+  <div class="xe-bg-icon">
+    <i class="linecons-comment"></i>
+  </div>
+  <div class="xe-header">
+    <div class="xe-icon">           
+      <i class="linecons-comment"></i>
+    </div>
+    <div class="xe-label">
+      <h3>
+        Conversations
+        <small>Chatting arround</small>
+      </h3>
+    </div>
+  </div>
+  <div class="xe-body">
+    
+    <ul class="list-unstyled" *ngFor="let item of conversationDetails">
+      <li>
+        <div class="xe-comment-entry">
+          <a href="#" class="xe-user-img">
+            <img src="assets/images/user-2.png" class="img-circle" width="40" />
+          </a>
+          
+          <div class="xe-comment">
+            <a class="xe-user-name">
+              <strong (click)="openChat(item.user)">{{item.user}}</strong>
+            </a>
+            
+            <p>{{item.desc}}</p>
+            <div *ngIf="item.topic">
+              <label>Topic : </label>
+              <span>{{item.topic}}</span>
+              
+              <div *ngIf="item.comments">
+              <label style="font-weight: bold;">comments : </label>
+              <div *ngFor="let comments of item.comments">
+              <span>{{comments.tComments}}</span><span style="font-weight: bold; float:right;">  By User :  {{currentUser}}</span>
+              </div>
+              </div>
+              <div *ngIf="currentTopic">
+                  <input type="text" class="form-control" style="width: inherit" placeholder="Add topic comments..." [(ngModel)]="currentTopicComments" (keyup.enter)="addTopicComments(item)"/>
+              </div>
+              <p (click)="currentComment()" style="font-weight: bold;">Add Comments</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+  <div class="xe-footer">
+      <input type="text" class="form-control" placeholder="Add comments..." [(ngModel)]="newComment" (keyup.enter)="addComment()"/>
+      <br>
+      <button type="button" class="btn btn-default" (click)="addTopic()">Launch Topic</button>
+  </div>
+  <div class="xe-footer">
+    <a href="#">View All</a>
+  </div>
+</div>
+</div>
+<div>
+<div class="row" *ngIf="isOpenChat">
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color: #428bca; padding: 10px 15px;">
+                    <span class="glyphicon glyphicon-comment"></span> {{chatUser}} Chat
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-remove" (click)="closeChat()"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <ul class="chat">
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{chatUser}}</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                </div>
+                                <div *ngFor="let item of conversationDetails">
+                                <p *ngIf="item.user == chatUser">
+                                    {{item.desc}}
+                                </p>
+                              </div>
+                            </div>
+                        </li>
+                        <li class="right clearfix" *ngFor="let item of chatArr"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>0 mins ago</small>
+                                    <strong class="pull-right primary-font">{{item.user}}</strong>
+                                </div>
+                                <p>
+                                    {{item.desc}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." [(ngModel)]="newChat" (keyup.enter)="addChatComment()" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat" (click)="addChatComment()">
+                                Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isTopic">
+  <div class="xe-widget xe-todo-list">
+    <div class="xe-header">
+      <div class="xe-icon">
+        <i class="fa-file-text-o"></i>
+      </div>
+      <div class="xe-label">
+        <strong>Add Topic</strong>
+      </div>
+    </div>
+    <div class="xe-body">
+      
+    </div>
+    <div class="xe-footer">
+      <input type="text" class="form-control" style="width: inherit" placeholder="Add topic..." [(ngModel)]="newTopic" (keyup.enter)="add()"/>
+      <br>
+      <button type="button" class="btn btn-default" (click)="add()" [disabled]="!newTopic">Add</button>
+      <button type="button" class="btn btn-default" (click)="cancelTopic()">Cancel</button>
+      <br>
+      <br>
+
+      
+
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-default" (click)="chatUsers()">User List</button>
+<div *ngIf="isVisible">
+    <select multiple (change)="setSelected($event.target)">
+        <option *ngFor="let item of myOptions" [value]="item.value" (click)="data()">{{item.chatUser}}</option>
+    </select>
+    <br>
+    <button type="button" class="btn btn-default"><div (click)="openChat(selectedUsers)">Chat</div></button>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  <div class="col-md-6" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartLabels"></th>
+      </tr>
+      <tr *ngFor="let d of lineChartData">
+        <td *ngFor="let label of lineChartLabels; let j=index"></td>
+      </tr>
+    </table>
+    <button (click)="randomize1()">CLICK</button>
+  </div>
+</div>
+
+
+
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <button (click)="randomize()">Update</button>
+</div>
+
